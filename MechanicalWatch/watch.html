@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Chronos | Nano Banana 典藏</title>
+    <meta name="description" content="探索微觀工藝的極致——陀飛輪腕錶沉浸式展示">
+    <link rel="stylesheet" href="watch_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Outfit:wght@200;300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader">
+        <div class="nano-loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">NANO CHRONOS</div>
+            <div class="loader-progress" id="loader-progress"></div>
+        </div>
+    </div>
+
+    <div class="ambient-glow" id="ambient-glow"></div>
+
+    <nav class="nano-nav">
+        <div class="nav-logo">CHRONOS.01</div>
+        <div class="nav-links">
+            <a href="../index.html">← GALLERY</a>
+            <a href="#act1">STRUCTURE</a>
+            <a href="#act2">MOVEMENT</a>
+            <button class="nav-order">PRE-ORDER</button>
+        </div>
+    </nav>
+
+    <!-- Act I: Exploded Structure -->
+    <section class="act" id="act1">
+        <div class="canvas-container">
+            <canvas id="watch-canvas"></canvas>
+            <!-- Poster Placeholder if no frames -->
+            <img src="../nano_banana_watch_hero_1776250744263.png" class="hero-poster" id="hero-poster">
+        </div>
+        
+        <div class="scroll-trigger" style="height: 300vh;">
+            <div class="label-layer">
+                <div class="nano-label top-left" data-scroll="0.1">
+                    <span class="code">NANO-01</span>
+                    <h3>904L 精鋼錶殼</h3>
+                    <p>經過三千次手工拋光，呈現如鏡面般的深邃質感。</p>
+                </div>
+                <div class="nano-label mid-right" data-scroll="0.4">
+                    <span class="code">NANO-02</span>
+                    <h3>蕉金齒輪組</h3>
+                    <p>Nano Banana 特製合金，摩擦係數降低 40%，動力儲存達 72 小時。</p>
+                </div>
+                <div class="nano-label bottom-left" data-scroll="0.7">
+                    <span class="code">NANO-03</span>
+                    <h3>微米級蝕刻</h3>
+                    <p>錶盤上的每一道紋路僅需 5 微米，肉眼難辨的極致精度。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="transition-divider">
+        <div class="divider-line"></div>
+        <div class="divider-text">觸碰機械的核心</div>
+    </div>
+
+    <!-- Act II: The Heartbeat (Tourbillon) -->
+    <section class="act" id="act2">
+        <div class="video-container" id="video-stage">
+            <video id="watch-video" muted loop playsinline poster="../nano_banana_watch_hero_1776250744263.png">
+                <source src="./assets/tourbillon_dance.mp4" type="video/mp4">
+            </video>
+            <div class="glass-overlay">
+                <div class="dashboard">
+                    <div class="stat">
+                        <label>VIBRATION</label>
+                        <span class="value">28,800 VPH</span>
+                    </div>
+                    <div class="stat">
+                        <label>PRECISION</label>
+                        <span class="value">±1 SEC/DAY</span>
+                    </div>
+                    <div class="stat">
+                        <label>TEMP</label>
+                        <span class="value">22.5°C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-overlay">
+            <div class="glass-card">
+                <span class="category">ACT II — 靈魂</span>
+                <h2>陀飛輪：引力的反叛</h2>
+                <p>這不是簡單的計時工具，而是在方寸之間對抗萬有引力的壯舉。蕉金色的旋轉架每分鐘旋轉一圈，抵消方位誤差，確保每一秒的純粹。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="nano-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="f-logo">CHRONOS</div>
+                <p>時光的定義者</p>
+            </div>
+            <div class="footer-col">
+                <h4>規格</h4>
+                <ul>
+                    <li>42mm 直徑</li>
+                    <li>Nano-Gold 塗層</li>
+                    <li>防水 100M</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">© 2026 NANO BANANA SERIES. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+    <script src="watch_app.js"></script>
+</body>
+</html>
