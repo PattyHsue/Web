@@ -199,16 +199,25 @@ canvas {
     letter-spacing: 3px;
 }
 
-/* --- Act II: Video & Dashboard --- */
-.video-container {
+.act-sticky-video {
+    height: 250vh; /* Increased height for longer scroll */
+}
+
+.sticky-wrapper {
     position: sticky;
     top: 0;
     height: 100vh;
     overflow: hidden;
 }
 
-video { width: 100%; height: 100%; object-fit: cover; }
+.video-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
 
+video { width: 100%; height: 100%; object-fit: cover; }
 .glass-overlay {
     position: absolute;
     inset: 0;
@@ -217,6 +226,7 @@ video { width: 100%; height: 100%; object-fit: cover; }
     align-items: center;
     padding-right: 10%;
     pointer-events: none;
+    z-index: 2;
 }
 
 .dashboard {
@@ -246,16 +256,18 @@ video { width: 100%; height: 100%; object-fit: cover; }
 
 .content-overlay {
     position: relative;
-    padding: 0 10% 100px;
+    z-index: 10;
+    padding: 180vh 10% 80vh; /* Taller padding to ensure text scrolls long enough */
 }
 
 .glass-card {
     max-width: 500px;
-    background: rgba(20, 20, 20, 0.3);
-    backdrop-filter: blur(30px);
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     border: 1px solid var(--glass-border);
     padding: 50px;
-    margin-top: -100px;
+    margin-left: auto;
 }
 
 .category {
@@ -265,13 +277,6 @@ video { width: 100%; height: 100%; object-fit: cover; }
     letter-spacing: 3px;
     display: block;
     margin-bottom: 20px;
-}
-
-.glass-card h2 {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: white;
 }
 
 /* --- Footer --- */
