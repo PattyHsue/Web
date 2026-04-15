@@ -200,7 +200,7 @@ canvas {
 }
 
 .act-sticky-video {
-    height: 250vh; /* Increased height for longer scroll */
+    height: 250vh;
 }
 
 .sticky-wrapper {
@@ -215,6 +215,28 @@ canvas {
     inset: 0;
     width: 100%;
     height: 100%;
+}
+
+.video-zoom-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(255, 225, 53, 0.15) 0%, black 80%);
+}
+
+#watch-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(2.5); /* Deep zoom for tourbillon focus */
+    filter: brightness(0.9) contrast(1.1);
+    animation: heartbeat-glow 6s infinite ease-in-out;
+}
+
+@keyframes heartbeat-glow {
+    0%, 100% { filter: brightness(0.8) contrast(1.1); }
+    50% { filter: brightness(1.2) contrast(1.3); }
 }
 
 video { width: 100%; height: 100%; object-fit: cover; }
