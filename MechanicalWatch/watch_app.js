@@ -13,9 +13,45 @@
     const video = document.getElementById('watch-video');
     const videoStage = document.getElementById('video-stage');
 
-    // Currently no frames, using poster only. 
-    // If user adds frames, set FRAME_COUNT and paths here.
-    const FRAME_COUNT = 0; 
+    // ═══════ PHASE 0: Configuration ═══════
+    const FRAME_COUNT = 192; 
+    const FRAME_PATH = (i) => `./frames/frame_${String(i).padStart(4, '0')}.jpg`;
+    const images = [];
+    let loadedCount = 0;
+    let isReady = false;
+    let lastDrawnFrame = -1;
+
+    // ═══════ PHASE 1: Preload Frames ═══════
+    function preloadFrames() {
+        for (let i = 0; i < FRAME_COUNT; i++) {
+            const img = new Image();
+            img.onload = onFrameLoaded;
+            img.onerror = onFrameLoaded;
+            img.src = FRAME_PATH(i);
+            images[i] = img;
+        }
+    }
+
+    function onFrameLoaded() {
+        loadedCount++;
+        if (loadedCount >= FRAME_COUNT) {
+            isReady = true;
+            if (images[0] && images[0].naturalWidth) {
+                canvas.width = images[0].naturalWidth;
+                canvas.height = images[0].naturalHeight;
+            }
+            drawFrame(0);
+            if (poster) poster.style.display = 'none'; // Hide poster once canvas ready
+        }
+    }
+
+    function drawFrame(index) {
+        if (!isReady || index === lastDrawnFrame) return;
+        if (!images[index] || !images[index].complete) return;
+        lastDrawnFrame = index;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(images[index], 0, 0, canvas.width, canvas.height);
+    }
 
     // 1. Loader Logic
     window.addEventListener('load', () => {
@@ -38,6 +74,12 @@
                 label.classList.remove('active');
             }
         });
+
+        // Sync Frame Animation
+        if (isReady) {
+            const frameIndex = Math.min(FRAME_COUNT - 1, Math.floor(scrollPercent * FRAME_COUNT));
+            requestAnimationFrame(() => drawFrame(frameIndex));
+        }
 
         // Dynamic Parallax for Poster
         if (poster) {
@@ -74,5 +116,8 @@
             }
         });
     }, 2000);
+
+    // 5. INIT
+    preloadFrames();
 
 })();
